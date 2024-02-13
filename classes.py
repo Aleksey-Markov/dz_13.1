@@ -14,7 +14,7 @@ class Product:
         return [self.name, self.description, self.price, self.quantity]
 
     def add_to_unique(self):
-        if self.name != Product.product(self)[0]:
+        if self.name != Product.product(apple)[0]:
             return True
 
 
@@ -23,12 +23,16 @@ class Category(Product):
     description: str
     products: list
     quantity_of_categories = 0
-    quantity_unique_products = 0
 
-    def __init__(self, name, description, products, quantity_of_categories, quantity_unique_products):
+    def __init__(self, name, description, products, quantity_of_categories=0, quantity_unique_products=0):
         self.name = name
-        self.products = Product.product(self)
         self.description = description
-        quantity_of_categories += 1
+        self.products = products
+        self.quantity_of_categories = 0
+        Category.quantity_of_categories += 1
         if Product.add_to_unique(self):
-            quantity_unique_products += 1
+            self.quantity_of_categories += 1
+
+
+apple = Product('яблоко','вкусное', 200, 3)
+fruits = Category('фрукты', 'полезные', Category.product(apple))
