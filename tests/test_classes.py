@@ -19,7 +19,7 @@ def test_init(product_apple):
     assert product_apple.quantity == 3
 
 
-def test_init_category():
-    assert category().name == 'фрукты'
-    assert category().description == 'полезные'
-    assert category().products == ['яблоко', 'вкусное', 200, 3]
+def test_init_category(category):
+    assert category.name == 'фрукты'
+    assert category.description == 'полезные'
+    assert category.products == ['яблоко', 'вкусное', 200, 3]

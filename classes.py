@@ -27,7 +27,7 @@ class Category(Product):
 
     def __init__(self, name, description, products, quantity_of_categories, quantity_unique_products):
         self.name = name
-        self.products = products
+        self.products = Product.product(self)
         self.description = description
         quantity_of_categories += 1
         if Product.add_to_unique(self):
