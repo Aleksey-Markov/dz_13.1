@@ -1,7 +1,6 @@
 import pytest
-
-import classes
-from classes import Product, Category
+from class_product import Product
+from class_category import Category
 
 
 @pytest.fixture()
@@ -11,7 +10,7 @@ def product_apple():
 
 @pytest.fixture()
 def category():
-    return Category('фрукты', 'полезные', classes.Product('яблоко', 'вкусное', 200, 3))
+    return Category('фрукты', 'полезные', Product('яблоко', 'вкусное', 200, 3))
 
 
 def test_init(product_apple):
@@ -25,3 +24,7 @@ def test_init_category(category):
     assert category.name == 'фрукты'
     assert category.description == 'полезные'
     assert category.list_of_products == ['яблоко', 'вкусное', 200, 3]
+
+
+def test_count():
+    assert Category.quantity_of_categories == 1
