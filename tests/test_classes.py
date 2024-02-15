@@ -10,7 +10,7 @@ def product_apple():
 
 @pytest.fixture()
 def category():
-    return Category('фрукты', 'полезные', Product('яблоко', 'вкусное', 200, 3))
+    return Category('фрукты', 'полезные', ['яблоко'])
 
 
 def test_init(product_apple):
@@ -23,8 +23,9 @@ def test_init(product_apple):
 def test_init_category(category):
     assert category.name == 'фрукты'
     assert category.description == 'полезные'
-    assert category.list_of_products == ['яблоко', 'вкусное', 200, 3]
+    assert category.products == ['яблоко']
 
 
 def test_count():
-    assert Category.quantity_of_categories == 1
+    assert Category.category_count == 1
+    assert Category.products_count == 1
