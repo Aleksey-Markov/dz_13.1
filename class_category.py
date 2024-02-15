@@ -2,6 +2,9 @@ from class_product import Product
 
 
 class Category:
+    '''
+    Класс категорий товаров
+    '''
     name: str
     description: str
     products = list
