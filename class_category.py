@@ -16,7 +16,4 @@ class Category:
         self.description = description
         self.products = products
         Category.category_count += 1
-        Category.products_count += 1
-        for product in products:
-            if product in products:
-                self.products_count -= 1
+        Category.products_count += len(set(products))
