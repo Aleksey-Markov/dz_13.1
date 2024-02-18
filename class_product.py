@@ -1,3 +1,6 @@
+from main import Category, fruits
+
+
 class Product:
     """
      Класс товаров
@@ -15,15 +18,12 @@ class Product:
 
     @classmethod
     def new_product(cls, name, description, price, quantity, products):
-        cls.name = name
-        cls.description = description
-        cls._price = price
-        cls.quantity = quantity
-        if cls.name == products.name:
-            cls.quantity += products.quantity
-            if cls._price < products._price:
-                cls._price = products._price
-        return cls
+        for i in products:
+            if name == i.name:
+                quantity += i.quantity
+                if price < i._price:
+                    price = i._price
+        return cls(name, description, price, quantity)
 
     @property
     def price(self):
@@ -45,5 +45,5 @@ class Product:
 
 apple = Product('яблоко', 'вкусное', 200, 3)
 grusha = Product('груша', 'тоже вкусная', 180, 5)
-grusha1 = Product.new_product('груша','тоже вкусная', 170, 2, grusha)
-
+grusha1 = Product.new_product('груша', 'тоже вкусная', 190, 2, fruits.products_list)
+print(grusha1.quantity)

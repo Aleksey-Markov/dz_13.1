@@ -1,4 +1,4 @@
-from class_product import Product, apple, grusha, grusha1
+from class_product import Product, apple, grusha
 
 
 class Category:
@@ -6,27 +6,31 @@ class Category:
     Класс категорий товаров
     '''
     category_count = 0
-    products_count = 1
+    products_count = 0
 
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.__products = [products.__dict__]
+        self.__products = products
         Category.category_count += 1
-        if products.name != products.name:
-            Category.products_count += 1
+        Category.products_count += len(set(products))
 
     @property
     def products(self):
-        return f'{self.__products[0]["name"]}, {self.__products[0]["_price"]} руб. Остаток: {self.__products[0]["quantity"]} шт.'
+        for item in self.__products:
+            result = print(f'{item.name}, {item.price} руб. Остаток:{item.quantity}')
+        return result
 
     @products.setter
     def products(self, product):
-        self.__products.append(product.__dict__)
+        self.__products.append(product)
+
+    @property
+    def products_list(self):
+        return self.__products
 
 
-fruits = Category('фрукты', 'полезные', apple)
-fruits1 = Category('фрукты', 'полезные', grusha)
-print(fruits1.products)
-
-
+fruits = Category('фрукты', 'полезные', [])
+fruits.products = apple
+fruits.products = grusha
+fruits.products
