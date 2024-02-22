@@ -1,10 +1,7 @@
-from class_product import Product, apple, grusha
-
-
 class Category:
-    '''
+    """
     Класс категорий товаров
-    '''
+    """
     category_count = 0
     products_count = 0
 
@@ -18,7 +15,7 @@ class Category:
     @property
     def products(self):
         for item in self.__products:
-            result = print(f'{item.name}, {item.price} руб. Остаток:{item.quantity}')
+            result = print(f'{item.name}, {item.price} руб. Остаток:{item.quantity} шт.')
         return result
 
     @products.setter
@@ -28,9 +25,3 @@ class Category:
     @property
     def products_list(self):
         return self.__products
-
-
-fruits = Category('фрукты', 'полезные', [])
-fruits.products = apple
-fruits.products = grusha
-fruits.products

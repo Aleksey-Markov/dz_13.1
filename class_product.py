@@ -1,15 +1,7 @@
-from main import Category, fruits
-
-
 class Product:
     """
      Класс товаров
     """
-    name: str
-    description: str
-    price: float
-    quantity: int
-
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
@@ -20,10 +12,11 @@ class Product:
     def new_product(cls, name, description, price, quantity, products):
         for i in products:
             if name == i.name:
-                quantity += i.quantity
+                i.quantity += quantity
                 if price < i._price:
-                    price = i._price
-        return cls(name, description, price, quantity)
+                    i._price = price
+            else:
+                return cls(name, description, price, quantity)
 
     @property
     def price(self):
@@ -41,9 +34,3 @@ class Product:
                 print("Введите корректный ответ, пожалуйста!")
         else:
             self._price = new_price
-
-
-apple = Product('яблоко', 'вкусное', 200, 3)
-grusha = Product('груша', 'тоже вкусная', 180, 5)
-grusha1 = Product.new_product('груша', 'тоже вкусная', 190, 2, fruits.products_list)
-print(grusha1.quantity)
