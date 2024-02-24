@@ -18,7 +18,6 @@ class Category:
             result += i.quantity
         return result
 
-
     def __str__(self):
         return f'{self.name}, количество продуктов: {len(self)} шт.'
 
