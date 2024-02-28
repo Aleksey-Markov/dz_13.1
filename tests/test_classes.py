@@ -29,3 +29,14 @@ def test_init_category(category):
 def test_count(category):
     assert Category.category_count == 1
     assert Category.products_count == 0
+
+
+def test_products_setter(category, product_apple):
+    assert category.products == []
+    category.products = [1, 2, 3]
+    assert category.products == []
+    category.products = product_apple
+    assert category.products == ['яблоко, 200 руб. Остаток:3 шт.']
+
+
+
