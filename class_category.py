@@ -1,3 +1,6 @@
+from class_product import  Product
+
+
 class Category:
     """
     Класс категорий товаров
@@ -30,7 +33,8 @@ class Category:
 
     @products.setter
     def products(self, product):
-        self.__products.append(product)
+        if isinstance(product, Product):
+            self.__products.append(product)
 
     @property
     def products_list(self):

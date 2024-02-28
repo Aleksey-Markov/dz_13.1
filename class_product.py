@@ -2,6 +2,7 @@ class Product:
     """
      Класс товаров
     """
+
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
@@ -12,8 +13,11 @@ class Product:
         return f'{self.name}, {self._price} руб. Остаток: {self.quantity} шт.'
 
     def __add__(self, other):
-        result = (self._price * self.quantity) + (other._price * other.quantity)
-        return result
+        if type(self) == type(other):
+            result = (self._price * self.quantity) + (other._price * other.quantity)
+            return result
+        else:
+            raise TypeError('Можно складывать только экземпляры одного и того же класса!')
 
     @classmethod
     def new_product(cls, name, description, price, quantity, products):
@@ -41,3 +45,20 @@ class Product:
                 print("Введите корректный ответ, пожалуйста!")
         else:
             self._price = new_price
+
+
+class SmartPhone(Product):
+    def __init__(self, name, description, price, quantity, performance, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.performance = performance
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    def __init__(self, name, description, price, quantity, manufacturer, germination, color):
+        super().__init__(name, description, price, quantity)
+        self.manufacturer = manufacturer
+        self.germination = germination
+        self.color = color
