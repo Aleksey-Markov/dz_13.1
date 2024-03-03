@@ -1,16 +1,17 @@
 from abc import ABC, abstractclassmethod
+from mixin import MixinShow
 
 
-class BaseProduct:
+class BaseProduct(ABC):
     """
     Абстрактный класс для продуктов
     """
     @abstractclassmethod
-    def __str__(self):
+    def __str__(cls):
         pass
 
 
-class Product(BaseProduct):
+class Product(MixinShow, BaseProduct):
     """
      Класс товаров
     """
@@ -20,6 +21,7 @@ class Product(BaseProduct):
         self.description = description
         self._price = price
         self.quantity = quantity
+        super().__init__(name, description, price, quantity)
 
     def __str__(self):
         return f'{self.name}, {self._price} руб. Остаток: {self.quantity} шт.'

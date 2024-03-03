@@ -1,7 +1,8 @@
 from class_product import Product
+from mixin import MixinShow
 
 
-class Category:
+class Category(MixinShow):
     """
     Класс категорий товаров
     """
@@ -9,6 +10,7 @@ class Category:
     products_count = 0
 
     def __init__(self, name, description, products):
+        super().__init__(name, description, products)
         self.name = name
         self.description = description
         self.__products = products
