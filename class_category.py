@@ -10,10 +10,10 @@ class Category(MixinShow):
     products_count = 0
 
     def __init__(self, name, description, products):
-        super().__init__(name, description, products)
         self.name = name
         self.description = description
         self.__products = products
+        super().__init__()
         Category.category_count += 1
         Category.products_count += len(set(products))
 
