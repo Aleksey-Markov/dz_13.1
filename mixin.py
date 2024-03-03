@@ -3,4 +3,4 @@ class MixinShow:
         self.args = args
 
     def __repr__(self):
-        return f'{self.__class__}{self.args}'
+        return f'{self.__class__.__name__}{self.args}'
