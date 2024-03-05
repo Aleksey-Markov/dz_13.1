@@ -7,7 +7,11 @@ class BaseProduct(ABC):
     Абстрактный класс для продуктов
     """
     @abstractclassmethod
-    def __str__(cls):
+    def __str__(cls, *args, **kwargs):
+        pass
+
+    @abstractclassmethod
+    def new_product(cls, *args, **kwargs):
         pass
 
 
@@ -61,7 +65,7 @@ class Product(BaseProduct, MixinShow):
             self._price = new_price
 
 
-class SmartPhone(Product):
+class SmartPhone(Product, MixinShow):
     def __init__(self, name, description, price, quantity, performance, model, memory, color):
         self.performance = performance
         self.model = model
@@ -70,7 +74,7 @@ class SmartPhone(Product):
         super().__init__(name, description, price, quantity)
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, MixinShow):
     def __init__(self, name, description, price, quantity, manufacturer, germination, color):
         self.manufacturer = manufacturer
         self.germination = germination
