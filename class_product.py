@@ -1,4 +1,4 @@
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 from mixin import MixinShow
 
 
@@ -6,12 +6,13 @@ class BaseProduct(ABC):
     """
     Абстрактный класс для продуктов
     """
-    @abstractclassmethod
-    def __str__(cls, *args, **kwargs):
+    @abstractmethod
+    def __str__(self):
         pass
 
-    @abstractclassmethod
-    def new_product(cls, *args, **kwargs):
+    @classmethod
+    @abstractmethod
+    def new_product(cls):
         pass
 
 
