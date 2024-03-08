@@ -40,6 +40,8 @@ class Product(BaseProduct, MixinShow):
 
     @classmethod
     def new_product(cls, name, description, price, quantity, products):
+        if quantity == 0:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен!')
         for i in products:
             if name == i.name:
                 i.quantity += quantity

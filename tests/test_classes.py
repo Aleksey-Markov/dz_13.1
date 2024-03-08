@@ -39,4 +39,6 @@ def test_products_setter(category, product_apple):
     assert category.products == ['яблоко, 200 руб. Остаток:3 шт.']
 
 
-
+def test_new_product_quantity():
+    with pytest.raises(ValueError):
+        Product.new_product('apple', 'tasty', 100, 0, [])
