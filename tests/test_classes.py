@@ -13,6 +13,11 @@ def category():
     return Category('фрукты', 'полезные', [])
 
 
+@pytest.fixture()
+def zero_quantity():
+    return Product('phone', 'smart', 20000, 0)
+
+
 def test_init(product_apple):
     assert product_apple.name == 'яблоко'
     assert product_apple.description == 'вкусное'
@@ -39,6 +44,6 @@ def test_products_setter(category, product_apple):
     assert category.products == ['яблоко, 200 руб. Остаток:3 шт.']
 
 
-def test_new_product_quantity():
+def test_products_setter_quantity(category, zero_quantity):
     with pytest.raises(ValueError):
-        Product.new_product('apple', 'tasty', 100, 0, [])
+        category.products = zero_quantity

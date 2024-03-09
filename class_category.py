@@ -35,6 +35,8 @@ class Category(MixinShow):
 
     @products.setter
     def products(self, product):
+        if product.quantity == 0:
+            raise ValueError('Невозможно добавить товар с нулевым количеством!')
         if isinstance(product, Product):
             self.__products.append(product)
 
