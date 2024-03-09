@@ -26,6 +26,15 @@ class Category(MixinShow):
     def __str__(self):
         return f'{self.name}, количество продуктов: {len(self)} шт.'
 
+    def average_sum(self):
+        try:
+            result = 0
+            for i in self.__products:
+                result += i._price * i.quantity
+            return result / len(self)
+        except ZeroDivisionError:
+            print('0')
+
     @property
     def products(self):
         products_list = []
